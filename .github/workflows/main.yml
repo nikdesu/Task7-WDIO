@@ -26,7 +26,8 @@ jobs:
       - name: Install Dependencies and Run Tests
         run: |
           npm install
-          npm run runall:headless
+          npm run runall:headless:chrome
+          npm run runall:headless:firefox
           npm run generate:report
 
       - name: Publishing Allure artifact to Github Actions
