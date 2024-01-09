@@ -10,7 +10,7 @@ export const config = {
 
   capabilities: [
     {
-      browserName: "chrome",
+      browserName: process.env.BROWSER_NAME,
       "goog:chromeOptions": {
         args: [
           "--no-sandbox",
