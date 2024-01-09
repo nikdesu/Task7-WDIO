@@ -4,7 +4,7 @@ export const config = {
   ...sharedConfig,
   runner: "local",
 
-  specs: ["../test/specs/**/*.ts"],
+  specs: ["./test/specs/**/*.ts"],
 
   maxInstances: 10,
 
