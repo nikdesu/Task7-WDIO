@@ -1,4 +1,4 @@
-import { config as sharedConfig } from "../wdio.conf.ts";
+import { config as sharedConfig } from "./wdio.conf.ts";
 
 export const config = {
   ...sharedConfig,

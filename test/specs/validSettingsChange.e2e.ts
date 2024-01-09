@@ -2,6 +2,7 @@ import loginPage from "../pageobjects/login.page.ts";
 import homePage from "../pageobjects/home.page.ts";
 import credentials from "../fixtures/credentials.ts";
 import settingsPage from "../pageobjects/settings.pahe.ts";
+import { Key } from 'webdriverio'
 import { faker } from "@faker-js/faker";
 
 describe("Settings change", () => {
@@ -12,10 +13,13 @@ describe("Settings change", () => {
     await loginPage.open();
     await loginPage.login(credentials.username, credentials.password);
     await homePage.myAccBtn.click();
-    await browser.pause(5000)
+    await settingsPage.emailSettingsInput.clearValue();
+    await settingsPage.emailSettingsInput.click();
+    await browser.keys([Key.Ctrl, 'a', Key.Backspace])
     await settingsPage.emailSettingsInput.setValue(email);
+    await settingsPage.phoneSettingsInput.click();
+    await browser.keys([Key.Ctrl, 'a', Key.Backspace])
     await settingsPage.phoneSettingsInput.setValue(phone);
-    await browser.pause(5000);
     await settingsPage.submitBtn.click();
     await browser.refresh();
     await expect(settingsPage.emailSettingsInput).toHaveValue(email);

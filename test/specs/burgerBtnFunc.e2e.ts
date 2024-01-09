@@ -7,8 +7,8 @@ describe("Burger button functionality", () => {
     await loginPage.open();
     await loginPage.login(credentials.username, credentials.password);
     await homePage.burgerBtn.click();
-    await expect(homePage.sideMenu).toHaveAttr("style", RegExp("visibility: hidden"));
+    await expect(homePage.myAccBtn).not.toBeClickable();
     await homePage.burgerBtn.click();
-    await expect(homePage.sideMenu).not.toHaveAttr("style", RegExp("visibility: hidden"));
+    await expect(homePage.myAccBtn).toBeClickable();
   });
 });
