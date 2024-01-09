@@ -14,7 +14,8 @@
   "scripts": {
     "runall.specialBrowser": "env BROWSER_NAME=chrome wdio run ./wdio.conf.ts",
     "runall": "wdio run ./wdio.conf.ts",
-    "runall:headless": "wdio run ./wdio.headless.conf.ts",
+    "runall:headless:chrome": "BROWSER_NAME=chrome wdio run ./wdio.headless.conf.ts",
+    "runall:headless:firefox": "BROWSER_NAME=firefox wdio run ./wdio.headless.conf.ts",
     "generate:report": "npx allure generate ./reports/allure-results --report-dir ./reports/allure-report --clean",
     "test1": "env BROWSER_NAME=chrome wdio run ./wdio.conf.ts --spec ./test/specs/validSignUp.e2e.ts",
     "test2": "wdio run ./wdio.conf.ts --spec ./test/specs/invalidSignUp.e2e.ts",
