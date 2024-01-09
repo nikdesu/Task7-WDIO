@@ -1,0 +1,44 @@
+name: WDIO tests
+on: push
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Clone Repository
+        uses: actions/checkout@v4
+        with:
+          repository: cypress-io/cypress-realworld-app
+          ref: develop
+          path: ./cloned-repo
+          
+      - name: Install Dependencies and Run Dev Server
+        run: |
+          cd cloned-repo
+          yarn install
+          yarn dev & sleep 20 && curl http://localhost:3000
+
+      - name: Install Dependencies and Run Tests
+        run: |
+          npm install
+          npm run runall:headless
+          npm run generate:report
+
+      - name: Publishing Allure artifact to Github Actions
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: allure-report
+          path: allure-report 
+
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages-report
+          publish_dir: ./reports/allure-report
