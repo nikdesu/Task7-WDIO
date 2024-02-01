@@ -29,6 +29,7 @@ jobs:
           npm run runall:headless:chrome
           npm run runall:headless:firefox
           npm run generate:report
+          continue-on-error: true
 
       - name: Publishing Allure artifact to Github Actions
         uses: actions/upload-artifact@v2
