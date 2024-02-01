@@ -27,20 +27,21 @@ jobs:
         run: |
           npm install
           npm run runall:headless:chrome
-          npm run runall:headless:firefox
-          npm run generate:report
           continue-on-error: true
+          npm run runall:headless:firefox
+          continue-on-error: true
+          npm run generate:report
 
       - name: Publishing Allure artifact to Github Actions
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: allure-report
-          path: allure-report 
+          path: ./reports/allure-report
 
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        with:
+        with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages-report
           publish_dir: ./reports/allure-report
