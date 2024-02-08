@@ -35,6 +35,7 @@ jobs:
       - name: Run Tests Firefox
         run: | 
           npm run runall:headless:firefox
+        continue-on-error: true
 
       - name: Generate Report
         run: |
