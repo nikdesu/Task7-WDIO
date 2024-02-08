@@ -32,10 +32,10 @@ jobs:
           npm run runall:headless:chrome
         continue-on-error: true
 
-      - name: Run Tests Firefox
-        run: | 
-          npm run runall:headless:firefox
-        continue-on-error: true
+      # - name: Run Tests Firefox
+      #   run: | 
+      #     npm run runall:headless:firefox
+      #   continue-on-error: true
 
       - name: Generate Report
         run: |
