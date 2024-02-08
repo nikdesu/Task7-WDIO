@@ -27,11 +27,14 @@ jobs:
         run: |
           npm install
 
-      - name: Run Tests
+      - name: Run Tests Chrome
         run: |
           npm run runall:headless:chrome
-          npm run runall:headless:firefox
         continue-on-error: true
+
+      - name: Run Tests Firefox
+        run: | 
+          npm run runall:headless:firefox
 
       - name: Generate Report
         run: |
